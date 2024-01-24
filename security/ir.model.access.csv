@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+Projet_manager,Projet manager,model_innavante_projet,group_manager,1,1,1,1
+etudiant_manager,etudiant manager,model_innavante_etudiant,group_manager,1,1,1,1
+evaluation_manager,evaluation manager,model_innavante_evaluation,group_manager,1,1,1,1
+evaluateur_manager,evaluateur manager,model_innavante_evaluateur,group_manager,1,1,1,1
+Projet_read_all,Projet all,model_innavante_projet,,1,0,0,0
+etudiant_read_all,etudiant all,model_innavante_etudiant,,1,0,0,0
+evaluation_read_all,evaluation all,model_innavante_evaluation,,1,0,0,0
+evaluateur_read_all,evaluateur all,model_innavante_evaluateur,,1,0,0,0
+

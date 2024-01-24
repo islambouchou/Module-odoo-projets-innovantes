@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+   <record model="ir.ui.view" id="Projet_form_view">
+            <field name="name">Projet.form</field>
+            <field name="model">innavante.projet</field>
+            <field name="arch" type="xml">
+                <form string="Projet Form">
+                    <sheet>
+                        <group>
+                            <field name="nom"/>  
+                            <field name="description"/>
+                            <field name="date_debut"/>
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- override the automatically generated list view for Projet -->
+        <record model="ir.ui.view" id="Projet_tree_view">
+            <field name="name">Projet.tree</field>
+            <field name="model">innavante.projet</field>
+            <field name="arch" type="xml">
+                <tree string="Projet Tree">
+                    <field name="nom"/>  
+                    <field name="description"/>
+                    <field name="date_debut"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="Projet_search_view">
+            <field name="name">Projet.search</field>
+            <field name="model">innavante.projet</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="nom"/>                
+                </search>
+            </field>
+        </record>
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="projet_list_action">
+            <field name="name">Projets</field>
+            <field name="res_model">innavante.projet</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first projet
+                </p>
+            </field>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_innovantes_menu" name="Innovantes"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="innovantes_menu" name="Innovantes"
+                  parent="main_innovantes_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent innovantes_menu and *after* its
+             action projet_list_action -->
+        <menuitem id="projet_menu" name="Projets" parent="innovantes_menu"
+                  action="projet_list_action"/>
+
+
+
+
+        <!-- etudiant form view -->
+        <record model="ir.ui.view" id="etudiant_form_view">
+            <field name="name">etudiant.form</field>
+            <field name="model">innavante.etudiant</field>
+            <field name="arch" type="xml">
+                <form string="etudiant Form">
+                    <sheet>
+                    
+                        <group>
+                            <field name="nom"/>
+                            <field name="matricule"/>
+                            <field name="projet_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- etudiant tree/list view -->
+        <record model="ir.ui.view" id="etudiant_tree_view">
+            <field name="name">etudiant.tree</field>
+            <field name="model">innavante.etudiant</field>
+            <field name="arch" type="xml">
+                <tree string="etudiant Tree">
+                    <field name="nom"/>
+                    <field name="matricule"/>
+                    <field name="projet_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="etudiant_search_view">
+            <field name="name">Etudiant.search</field>
+            <field name="model">innavante.etudiant</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="nom"/>                
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="etudiant_list_action">
+            <field name="name">etudiant</field>
+            <field name="res_model">innavante.etudiant</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="etudiant_menu" name="Etudiants"
+                  parent="innovantes_menu"
+                  action="etudiant_list_action"/>
+
+        <!-- Evaluateur form view -->
+        <record model="ir.ui.view" id="evaluateur_form_view">
+            <field name="name">evaluateur.form</field>
+            <field name="model">innavante.evaluateur</field>
+            <field name="arch" type="xml">
+                <form string="evaluateur Form">
+                    <sheet>
+                        <group>
+                            <field name="nom"/>
+                            <field name="prenom"/>
+                            <field name="entreprise_affiliee"/>
+                            <field name="evaluations_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- evaluateur tree/list view -->
+        <record model="ir.ui.view" id="evaluateur_tree_view">
+            <field name="name">evaluateur.tree</field>
+            <field name="model">innavante.evaluateur</field>
+            <field name="arch" type="xml">
+                <tree string="evaluateur Tree">
+                    <field name="nom"/>
+                    <field name="prenom"/>
+                    <field name="entreprise_affiliee"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="evaluateur_search_view">
+            <field name="name">evaluateur.search</field>
+            <field name="model">innavante.evaluateur</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="nom"/>                
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="evaluateur_list_action">
+            <field name="name">evaluateur</field>
+            <field name="res_model">innavante.evaluateur</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="evaluateur_menu" name="Evaluateurs"
+                  parent="innovantes_menu"
+                  action="evaluateur_list_action"/>
+
+
+
+        <!-- Evaluation form view -->
+        <record model="ir.ui.view" id="evaluation_form_view">
+            <field name="name">evaluation.form</field>
+            <field name="model">innavante.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="evaluation Form">
+                    <sheet>
+                        <group>
+                            <field name="nom"/>
+                            <field name="appreciation"/>
+                            <field name="recommendation"/>
+                            <field name="project_id"/>
+                            <field name="evaluateurs_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Evaluation tree/list view -->
+        <record model="ir.ui.view" id="evaluation_tree_view">
+            <field name="name">evaluation.tree</field>
+            <field name="model">innavante.evaluation</field>
+            <field name="arch" type="xml">
+                <tree string="evaluation Tree">
+                    <field name="nom"/>
+                    <field name="appreciation"/>
+                    <field name="recommendation"/>
+                    <field name="project_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="evaluation_search_view">
+            <field name="name">evaluation.search</field>
+            <field name="model">innavante.evaluation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="nom"/>                
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="evaluation_list_action">
+            <field name="name">evaluation</field>
+            <field name="res_model">innavante.evaluation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="evaluation_menu" name="Evaluations"
+                  parent="innovantes_menu"
+                  action="evaluation_list_action"/>
+</odoo>
